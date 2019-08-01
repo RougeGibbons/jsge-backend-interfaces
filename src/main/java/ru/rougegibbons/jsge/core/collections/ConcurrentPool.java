@@ -1,4 +1,7 @@
-package ru.rougegibbons.jsge.core;
+package ru.rougegibbons.jsge.core.collections;
+
+import ru.rougegibbons.jsge.core.Handle;
+import ru.rougegibbons.jsge.core.JsgeObject;
 
 import java.util.concurrent.ConcurrentMap;
 
