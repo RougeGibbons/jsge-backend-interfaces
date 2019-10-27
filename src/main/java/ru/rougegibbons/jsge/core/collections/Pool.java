@@ -1,5 +1,6 @@
 package ru.rougegibbons.jsge.core.collections;
 
+import ru.rougegibbons.jsge.core.Handle;
 import ru.rougegibbons.jsge.core.JsgeObject;
 import ru.rougegibbons.jsge.core.components.Component;
 
@@ -25,6 +26,18 @@ public interface Pool<T extends JsgeObject> extends JsgeObject, Map<Long, T> {
      * @since 0.0.1
      */
     interface ComponentPool extends Pool<Component> {
+
+    }
+
+    /**
+     * {@link Pool} interface extension for storing {@link Handle} collections.
+     *
+     * @author Kirill Cherkasov
+     * @see Pool
+     * @see Handle
+     * @since 0.0.1
+     */
+    interface HandlesPool extends Pool<Handle> {
 
     }
 }

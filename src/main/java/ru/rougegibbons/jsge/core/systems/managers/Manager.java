@@ -5,6 +5,7 @@ import org.jetbrains.annotations.Nullable;
 import ru.rougegibbons.jsge.core.Handle;
 import ru.rougegibbons.jsge.core.JsgeObject;
 import ru.rougegibbons.jsge.core.collections.ConcurrentPool;
+import ru.rougegibbons.jsge.core.systems.System;
 
 /**
  * {@link ConcurrentPool} extension representing systems that control various objects' lifecycle.
@@ -16,7 +17,7 @@ import ru.rougegibbons.jsge.core.collections.ConcurrentPool;
  * @see ConcurrentPool
  * @since 0.0.1
  */
-public interface Manager<T extends JsgeObject> extends ConcurrentPool<T> {
+public interface Manager<T extends JsgeObject> extends System, ConcurrentPool<T> {
     /**
      * check if object with given handle belongs to the manager.
      *
