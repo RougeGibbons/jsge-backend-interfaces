@@ -15,4 +15,16 @@ public interface JsgeObject {
      * @return object id.
      */
     @NotNull Long getId();
+
+    /**
+     * check if this object is to be removed from its manager's pool.
+     *
+     * @return true if the object is about to be removed, false otherwise.
+     */
+    @NotNull Boolean isToRemove();
+
+    /**
+     * mark object to be removed from its manager's pool.
+     */
+    void markToRemove();
 }

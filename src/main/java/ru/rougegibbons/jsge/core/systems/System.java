@@ -2,6 +2,7 @@ package ru.rougegibbons.jsge.core.systems;
 
 import org.jetbrains.annotations.NotNull;
 import ru.rougegibbons.jsge.core.JsgeObject;
+import ru.rougegibbons.jsge.core.systems.handlers.HandlerProvider;
 import ru.rougegibbons.jsge.engine.versions.VersionInfo;
 
 /**
@@ -10,10 +11,11 @@ import ru.rougegibbons.jsge.engine.versions.VersionInfo;
  *
  * @author Kirill Cherkasov
  * @see JsgeObject
+ * @see HandlerProvider
  * @see VersionInfo
  * @since 0.0.1
  */
-public interface System extends JsgeObject {
+public interface System extends JsgeObject, HandlerProvider {
     /**
      * get system's version.
      *
