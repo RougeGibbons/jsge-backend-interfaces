@@ -2,6 +2,7 @@ package ru.rougegibbons.jsge.core.systems;
 
 import org.jetbrains.annotations.NotNull;
 import ru.rougegibbons.jsge.core.JsgeObject;
+import ru.rougegibbons.jsge.core.collections.Queue;
 import ru.rougegibbons.jsge.core.systems.handlers.HandlerProvider;
 import ru.rougegibbons.jsge.engine.versions.VersionInfo;
 
@@ -27,4 +28,27 @@ public interface System extends JsgeObject, HandlerProvider {
      * performs single system tick.
      */
     void update();
+
+    /**
+     * get inbox messages queue.
+     *
+     * @return inbox messages queue.
+     */
+    @NotNull Queue.Mailbox getInbox();
+
+    /**
+     * get outbox messages queue.
+     *
+     * @return outbox messages queue.
+     */
+    @NotNull Queue.Mailbox getOutbox();
+
+    /**
+     * check if this system is idle at the moment.
+     *
+     * @return true if this system has no inbox messages to process, false otherwise.
+     */
+    default @NotNull Boolean isIdle() {
+        return getInbox().isEmpty();
+    }
 }
