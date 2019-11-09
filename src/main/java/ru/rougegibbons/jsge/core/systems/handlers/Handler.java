@@ -16,7 +16,7 @@ import java.util.function.Function;
  * @see JsgeObject
  * @since 0.0.1
  */
-public interface Handler<T, R> extends JsgeObject, Function<@NotNull T, @Nullable R> {
+public interface Handler<T, R> extends JsgeObject, Function<@NotNull JsgeObject, @Nullable JsgeObject> {
     /**
      * {@link Handler} interface extension for handlers dealing
      * with {@link Message} interface implementations and their derivatives.
