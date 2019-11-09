@@ -18,6 +18,20 @@ import java.util.function.Function;
  */
 public interface Handler<T, R> extends JsgeObject, Function<@NotNull JsgeObject, @Nullable JsgeObject> {
     /**
+     * get input class data.
+     *
+     * @return input class data.
+     */
+    @NotNull Class<T> getInputClass();
+
+    /**
+     * get result class data.
+     *
+     * @return result class data.
+     */
+    @NotNull Class<R> getResultClass();
+
+    /**
      * {@link Handler} interface extension for handlers dealing
      * with {@link Message} interface implementations and their derivatives.
      *
