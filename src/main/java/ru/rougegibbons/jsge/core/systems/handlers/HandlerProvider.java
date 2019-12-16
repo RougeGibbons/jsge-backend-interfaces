@@ -19,8 +19,8 @@ public interface HandlerProvider {
      * @param <T>        - class to register handler for.
      * @param <R>        - response type class.
      */
-    <T extends JsgeObject, R extends JsgeObject> void registerHandler(@NotNull Class<T> toRegister,
-                                                                      @NotNull Handler<T, R> handler);
+    <IT extends JsgeObject, T extends JsgeObject, IR extends JsgeObject, R extends JsgeObject>
+    void registerHandler(@NotNull Class<T> toRegister, @NotNull Handler<IT, T, IR, R> handler);
 
     /**
      * unregister handler for given class.
@@ -44,7 +44,7 @@ public interface HandlerProvider {
          * @param handler    - see {@link HandlerProvider}.
          * @param <T>        - see {@link HandlerProvider}.
          */
-        <T extends Message> void registerHandler(@NotNull Class<T> toRegister,
-                                                 @NotNull Handler.MessageHandler handler);
+        <T extends Message, R extends Message> void registerHandler(@NotNull Class<T> toRegister,
+                                                                    @NotNull Handler.MessageHandler<T, R> handler);
     }
 }

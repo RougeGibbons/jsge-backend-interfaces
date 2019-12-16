@@ -8,13 +8,15 @@ import ru.rougegibbons.jsge.core.systems.messages.Message;
 /**
  * base interface for classes responsible for handling messaging on low-level (concrete message classes).
  *
- * @param <T> - class or interface of the context-providing object to handle
- * @param <R> - class or interface of the context-providing object storing the result.
+ * @param <IT> - class or interface of the context-providing object to handle, in form being passed to process() method.
+ * @param <IR> - class or interface of the context-providing object storing the result, in form being returned from process() method.
+ * @param <R>  - class or interface of the context-providing object storing the result.
+ * @param <T>  - class or interface of the context-providing object to handle.
  * @author Kirill Cherkasov
  * @see JsgeObject
  * @since 0.0.1
  */
-public interface Handler<T, R> extends JsgeObject {
+public interface Handler<IT, T, IR, R> extends JsgeObject {
     /**
      * get input class data.
      *
@@ -35,15 +37,17 @@ public interface Handler<T, R> extends JsgeObject {
      * @param input - data input.
      * @return some result data or null.
      */
-    @Nullable R process(@NotNull T input);
+    @Nullable IR process(@NotNull IT input);
 
     /**
      * {@link Handler} interface extension for handlers dealing
      * with {@link Message} interface implementations and their derivatives.
      *
+     * @param <R> - class or interface of the context-providing object storing the result.
+     * @param <T> - class or interface of the context-providing object to handle.
      * @see Message
      * @since 0.0.1
      */
-    interface MessageHandler extends Handler<Message, Message> {
+    interface MessageHandler<T, R> extends Handler<Message, T, Message, R> {
     }
 }
