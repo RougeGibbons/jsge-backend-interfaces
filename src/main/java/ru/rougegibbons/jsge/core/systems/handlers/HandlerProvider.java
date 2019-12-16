@@ -45,6 +45,6 @@ public interface HandlerProvider {
          * @param <T>        - see {@link HandlerProvider}.
          */
         <T extends Message> void registerHandler(@NotNull Class<T> toRegister,
-                                                 @NotNull Handler.MessageHandler<T> handler);
+                                                 @NotNull Handler.MessageHandler handler);
     }
 }

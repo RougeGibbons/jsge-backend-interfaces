@@ -5,8 +5,6 @@ import org.jetbrains.annotations.Nullable;
 import ru.rougegibbons.jsge.core.JsgeObject;
 import ru.rougegibbons.jsge.core.systems.messages.Message;
 
-import java.util.function.Function;
-
 /**
  * base interface for classes responsible for handling messaging on low-level (concrete message classes).
  *
@@ -16,7 +14,7 @@ import java.util.function.Function;
  * @see JsgeObject
  * @since 0.0.1
  */
-public interface Handler<T, R> extends JsgeObject, Function<@NotNull JsgeObject, @Nullable JsgeObject> {
+public interface Handler<T, R> extends JsgeObject {
     /**
      * get input class data.
      *
@@ -32,14 +30,20 @@ public interface Handler<T, R> extends JsgeObject, Function<@NotNull JsgeObject,
     @NotNull Class<R> getResultClass();
 
     /**
+     * process input data into some (optional result).
+     *
+     * @param input - data input.
+     * @return some result data or null.
+     */
+    @Nullable R process(@NotNull T input);
+
+    /**
      * {@link Handler} interface extension for handlers dealing
      * with {@link Message} interface implementations and their derivatives.
      *
-     * @param <I> - {@link Message} interface implementation or its derivative storing the input.
      * @see Message
      * @since 0.0.1
      */
-    interface MessageHandler<I extends Message> extends Handler<I, Message> {
-
+    interface MessageHandler extends Handler<Message, Message> {
     }
 }
