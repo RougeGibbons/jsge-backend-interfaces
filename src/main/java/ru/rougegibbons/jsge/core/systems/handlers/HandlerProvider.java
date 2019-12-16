@@ -1,6 +1,7 @@
 package ru.rougegibbons.jsge.core.systems.handlers;
 
 import org.jetbrains.annotations.NotNull;
+import ru.rougegibbons.jsge.core.JsgeObject;
 import ru.rougegibbons.jsge.core.systems.messages.Message;
 
 /**
@@ -18,7 +19,8 @@ public interface HandlerProvider {
      * @param <T>        - class to register handler for.
      * @param <R>        - response type class.
      */
-    <T, R> void registerHandler(@NotNull Class<T> toRegister, @NotNull Handler<T, R> handler);
+    <T extends JsgeObject, R extends JsgeObject> void registerHandler(@NotNull Class<T> toRegister,
+                                                                      @NotNull Handler<T, R> handler);
 
     /**
      * unregister handler for given class.
@@ -26,7 +28,7 @@ public interface HandlerProvider {
      * @param toUnregister - class to be unregistered as {@link Class} instance.
      * @param <T>          - class to be unregistered
      */
-    <T> void unregisterHandler(@NotNull Class<T> toUnregister);
+    <T extends JsgeObject> void unregisterHandler(@NotNull Class<T> toUnregister);
 
     /**
      * {@link HandlerProvider} extension for providers responsible for dealing with in-game messages.
